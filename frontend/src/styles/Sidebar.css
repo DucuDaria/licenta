@@ -1,0 +1,55 @@
+/* Buton burger fix */
+.burger-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 110;
+  font-size: 28px;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar vizibil doar când e deschis */
+.custom-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #e8f5e9;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  padding-top: 80px;
+  transition: all 0.3s ease;
+}
+
+/* Listă de butoane */
+.sidebar-menu {
+  list-style: none;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-menu button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background-color: #81c784;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.25s ease;
+}
+
+.sidebar-menu button:hover {
+  background-color: #66bb6a;
+}

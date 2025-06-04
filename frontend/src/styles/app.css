@@ -1,0 +1,51 @@
+/* App CSS */
+
+.app-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;  /* Lățimea Sidebar-ului */
+    background-color: #f4f4f4; /* Culoare de fundal pentru Sidebar */
+    position: fixed;
+    height: 100vh;  /* Înălțimea Sidebar-ului */
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content-container {
+    margin-left: 250px; /* Asigură că conținutul nu se suprapune cu Sidebar-ul */
+    padding: 20px;
+    flex-grow: 1;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px;
+  }
+  
+  .sidebar button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .sidebar button:hover {
+    background-color: #0056b3;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+  }
+  

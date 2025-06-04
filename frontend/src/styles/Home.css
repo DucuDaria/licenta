@@ -1,0 +1,54 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.home-content {
+  flex: 1;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-welcome {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.home-welcome h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.search-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-form input {
+  padding: 0.75rem;
+  width: 60%;
+  min-width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
