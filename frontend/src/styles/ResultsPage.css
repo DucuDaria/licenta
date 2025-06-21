@@ -1,18 +1,72 @@
-.results-container {
-    padding: 30px;
-  }
-  
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .product-card {
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  
+/* Container general */
+.rezultate-container {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f5fff5; /* foarte deschis verde */
+  min-height: 100vh;
+}
+
+/* Bara de filtre */
+.filtre-box {
+  background-color: #d4f8d4; /* verde deschis */
+  border: 2px solid #a0e6a0;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+/* Butoane de filtrare */
+.filtru-btn {
+  background-color: #2e7d32; /* verde inchis */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+}
+
+.filtru-btn:hover {
+  background-color: #256428;
+}
+
+/* Lista de produse */
+.produse-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Card produs individual */
+.produs-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.1s ease-in-out;
+}
+
+.produs-card:hover {
+  transform: scale(1.01);
+}
+
+.produs-card a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.produs-card a:hover {
+  text-decoration: underline;
+}
