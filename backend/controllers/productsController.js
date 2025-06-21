@@ -28,4 +28,3 @@ const result = await conn.execute(
   `SELECT * FROM produse OFFSET :offset ROWS FETCH NEXT :limit ROWS ONLY`,
   { offset, limit }
 );
-
