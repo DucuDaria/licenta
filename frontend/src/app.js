@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { auth } from './services/firebase';import React from 'react';
+import { auth } from './services/firebase';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,

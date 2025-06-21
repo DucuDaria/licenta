@@ -1,11 +1,8 @@
 import axios from 'axios';
 import { db } from './firebase';
-import { collection, query, where, orderBy, getDocs, addDoc } from 'firebase/firestore';
-import { serverTimestamp } from 'firebase/firestore';
-const API_BASE = process.env.REACT_APP_API_URL;
+import { collection, query, where, orderBy, getDocs, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const API_URL = process.env.REACT_APP_API_URL;
-
 
 export const saveSearch = async (uid, searchTerm) => {
   try {
@@ -19,10 +16,18 @@ export const saveSearch = async (uid, searchTerm) => {
   }
 };
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 export const cautaProduse = async (termen) => {
-  const res = await axios.get(`${API_BASE}/products/search/${encodeURIComponent(termen)}`);
-  return res.data;
+  try {
+    const res = await axios.get(`${API_BASE}/api/products/search/${encodeURIComponent(termen)}`);
+    return res.data;
+  } catch (err) {
+    console.error('Eroare la interogarea produselor:', err);
+    throw new Error('Eroare la interogarea produselor');
+  }
 };
+
 
 export const getSearchHistory = async (uid) => {
   const q = query(
@@ -37,8 +42,6 @@ export const getSearchHistory = async (uid) => {
     ...doc.data()
   }));
 };
-
-
 
 export const getAllProduse = async () => {
   const res = await axios.get(`${API_URL}/api/products`);

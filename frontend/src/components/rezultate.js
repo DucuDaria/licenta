@@ -8,23 +8,25 @@ import { cautaProduse } from '../services/api';
 function Rezultate() {
   const [produse, setProduse] = useState([]);
   const [uid, setUid] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const termen = new URLSearchParams(location.search).get('termen');
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) setUid(user.uid);
+      setUid(user ? user.uid : null);
     });
     return () => unsubscribe();
   }, []);
 
   useEffect(() => {
     const fetchResults = async () => {
+      if (!termen) return;
       try {
         const data = await cautaProduse(termen);
-        setProduse(data);
-
+        console.log("📦 Produse:", data); // Debug
+        setProduse(data || []);
         if (uid) {
           await addDoc(collection(db, "searches"), {
             uid,
@@ -34,24 +36,32 @@ function Rezultate() {
         }
       } catch (err) {
         console.error("Eroare la încărcarea rezultatelor:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (termen && uid) {
+    if (uid) {
       fetchResults();
     }
   }, [termen, uid]);
 
+  if (loading) {
+    return <div style={{ padding: '2rem' }}>Se încarcă...</div>;
+  }
+
   return (
     <div style={{ padding: "2rem" }}>
-      <h2>Rezultate pentru: {termen}</h2>
-      {produse.length === 0 ? (
+      <h2>Rezultate pentru: <em>{termen}</em></h2>
+      {!produse || produse.length === 0 ? (
         <p>Nu s-au găsit produse.</p>
       ) : (
         <ul>
           {produse.map((produs) => (
-            <li key={produs.id}>
-              <strong>{produs.denumire}</strong> - {produs.pret} lei
+            <li key={produs.id || produs.denumire}>
+              <strong>{produs.denumire}</strong> – {produs.pret} lei<br />
+              Link: <a href={produs.link_cumparare} target="_blank" rel="noopener noreferrer">{produs.link_cumparare}</a><br />
+              ID Magazin: {produs.id_magazin}
             </li>
           ))}
         </ul>
