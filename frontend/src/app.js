@@ -1,6 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { auth } from './services/firebase';
+
+import { useState, useEffect } from 'react';
+import { auth } from './services/firebase';import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate
+} from 'react-router-dom';
+
 
 import AccountPage from './components/AccountPage';
 import HistoryPage from './components/HistoryPage';
@@ -8,7 +17,8 @@ import AuthPage from './components/AuthPage';
 import Home from './components/home';
 import ProductsPage from './components/ProductsPage';
 import Sidebar from './components/Sidebar';
-import Rezultate from './components/rezultate'; // ✅ ADĂUGAT
+import Rezultate from './components/rezultate'; 
+import FavoritesPage from './components/FavoritesPage';
 
 import './styles/app.css';
 import './styles/AuthPage.css';
@@ -59,6 +69,7 @@ function App() {
           <Route path="/history" element={user ? <HistoryPage /> : <Navigate to="/auth" />} />
           <Route path="/account" element={user ? <AccountPage /> : <Navigate to="/auth" />} />
           <Route path="/rezultate" element={user ? <Rezultate /> : <Navigate to="/auth" />} /> {/* ✅ ADĂUGAT */}
+          <Route path="/favorites" element={<FavoritesPage />} />
         </Routes>
       </div>
     </div>

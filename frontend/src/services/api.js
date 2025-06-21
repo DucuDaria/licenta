@@ -1,5 +1,17 @@
 import axios from 'axios';
+const API_BASE = process.env.REACT_APP_API_URL;
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
 
-export const fetchProducts = () => API.get('/products');
+const API_URL = process.env.REACT_APP_API_URL;
+
+
+export const cautaProduse = async (termen) => {
+  const res = await axios.get(`${API_BASE}/products/search/${encodeURIComponent(termen)}`);
+  return res.data;
+};
+
+
+export const getAllProduse = async () => {
+  const res = await axios.get(API_URL);
+  return res.data;
+};

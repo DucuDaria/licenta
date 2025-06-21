@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { getAllProduse } from '../services/api';
+// În ProductsPage sau Rezultate
+import ProductsList from './ProductsList';
+
 
 function ProductsPage() {
   const [produse, setProduse] = useState([]);
@@ -7,8 +11,7 @@ function ProductsPage() {
   useEffect(() => {
     const fetchProduse = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products');
-        const data = await response.json();
+        const data = await getAllProduse();
         setProduse(data);
       } catch (error) {
         console.error("Eroare la încărcarea produselor:", error);
@@ -22,14 +25,14 @@ function ProductsPage() {
 
   return (
     <div style={{ padding: "2rem" }}>
-      <h2>Lista de produse</h2>
+      <h2>Toate produsele</h2>
       {loading ? (
         <p>Se încarcă...</p>
       ) : (
         <ul>
-          {produse.map(produs => (
+          {produse.map((produs) => (
             <li key={produs.id}>
-              <strong>{produs.nume}</strong> - {produs.pret} lei
+              <strong>{produs.denumire}</strong> - {produs.pret} lei
             </li>
           ))}
         </ul>

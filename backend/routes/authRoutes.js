@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser } = require('../controllers/authController');
+const { registerUser } = require('../controllers/authController'); // ✅ import corect
 
-// Rute pentru Oracle DB
-router.post('/register', registerUser);
-router.post('/login', loginUser);
+router.post('/register', registerUser); // ✅ funcția există
 
 module.exports = router;

@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { cautaProduse } from '../services/api';
+import ProductsList from './ProductsList'
 
 function Rezultate() {
   const [produse, setProduse] = useState([]);
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const termen = params.get('termen');
+  const termen = new URLSearchParams(location.search).get('termen');
 
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/products/search/${encodeURIComponent(termen)}`);
-        const data = await res.json();
+        const data = await cautaProduse(termen);
         setProduse(data);
-      } catch (error) {
-        console.error("Eroare la încărcarea rezultatelor:", error);
+      } catch (err) {
+        console.error("Eroare la încărcarea rezultatelor:", err);
       }
     };
-
     if (termen) fetchResults();
   }, [termen]);
 
@@ -28,9 +27,9 @@ function Rezultate() {
         <p>Nu s-au găsit produse.</p>
       ) : (
         <ul>
-          {produse.map((produs, index) => (
-            <li key={index}>
-              <strong>{produs.nume}</strong> - {produs.pret} lei
+          {produse.map((produs) => (
+            <li key={produs.id}>
+              <strong>{produs.denumire}</strong> - {produs.pret} lei
             </li>
           ))}
         </ul>
